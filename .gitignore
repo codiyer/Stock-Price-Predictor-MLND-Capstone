@@ -1,3 +1,7 @@
 .ipynb_checkpoints
 .gitattributes
 .DS_Store
+.vscode
+venv
+.idea
+weights
