@@ -61,7 +61,7 @@ def split_data(x_data, y_data, split_rate):
     return x_train, x_test, y_train, y_test
 
 
-def normalize_data(data, normalization_factor=100):
+def normalize_data(data, normalization_factor):
     """
     Used for data normalization.
     :param data: data as Pandas dataframe
