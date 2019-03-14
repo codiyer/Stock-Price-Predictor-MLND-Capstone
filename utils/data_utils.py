@@ -33,7 +33,7 @@ def process_data(features, output, num_of_days):
     x_data = list()
     y_data = list()
     for i in range(len(features) - num_of_days):
-        x = np.array(features[i : i + num_of_days][:])
+        x = np.array(features[i: i + num_of_days][:])
         x_data.append(x)
         y = np.array(output.values[i + num_of_days])
         y_data.append(y)

@@ -7,10 +7,9 @@ from utils import data_utils
 
 class KNNModel:
 
-    def __init__(self, ticker, num_of_days,
+    def __init__(self, data, num_of_days,
                  train_valid_test_split_rate=0.8, normalization_factor=100):
-        self.ticker = ticker
-        self.data = data_utils.get_data(ticker=ticker)
+        self.data = data
         self.normalized_data = data_utils.normalize_data(self.data, normalization_factor)
         self.features, self.output = data_utils.get_features_output(self.normalized_data)
         x_data, y_data = data_utils.process_data(self.features, self.output, num_of_days)
