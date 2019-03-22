@@ -1,6 +1,8 @@
 from keras.callbacks import ModelCheckpoint, EarlyStopping
+from sklearn.metrics import mean_squared_error, mean_absolute_error
 
 from utils import data_utils
+import numpy as np
 
 
 class BaseModel:
@@ -44,3 +46,19 @@ class BaseModel:
 
     def evaluate(self):
         return self.model.evaluate(self.x_test, self.y_test)
+
+    def predict(self, x):
+        return self.model.predict(x)
+
+    def score(self, y_true, y_pred):
+        return mean_squared_error(y_true, y_pred), mean_absolute_error(y_true,y_pred), self.mean_absolute_percentage_error(y_true, y_pred)
+
+    @staticmethod
+    def mean_absolute_percentage_error(y_true, y_pred):
+        """
+        Used for calculating mean absolute percentage error
+        :param y_true: Actual y values
+        :param y_pred: Predicted y values
+        :return: Mean absolute percentage error metric value
+        """
+        return np.mean(np.abs((y_true - y_pred) / y_true)) * 100

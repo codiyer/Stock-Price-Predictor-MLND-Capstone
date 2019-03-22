@@ -8,7 +8,7 @@ def get_data(ticker, start_date="1997-01-01", end_date="2017-12-31"):
     Returns data as pandas dataframe
     """
     data = yf.download(ticker, start=start_date, end=end_date)
-    return data
+    return data.round(2)
 
 
 def get_features_output(data):
@@ -16,8 +16,8 @@ def get_features_output(data):
     Splits the dataset into features and output.
     Returns features and output as pandas df.
     """
-    output = data[["Close"]].round(2)
-    features = data[["Open", "High", "Low", "Close"]].round(2)
+    output = data[["Close"]]
+    features = data[["Open", "High", "Low", "Close"]]
     return features, output
 
 
@@ -27,7 +27,7 @@ def process_data(features, output, num_of_days):
     x_values contains features for :num_of_days days. and y_values contains output for the next day.
     :param features:
     :param output:
-    :param num_of_days: Number of days for whic hthe data needs to be considered for analysis.
+    :param num_of_days: Number of days for which the data needs to be considered for analysis.
     :return: x_data and y_data as numpy arrays
     """
     x_data = list()
@@ -69,3 +69,8 @@ def normalize_data(data, normalization_factor):
     :return: Divides all values of the data using the normalization factor and returns normalized data frame
     """
     return data / normalization_factor
+
+
+def preprocess(data, num_of_days):
+    features, output = get_features_output(data)
+    return process_data(features, output, num_of_days)
