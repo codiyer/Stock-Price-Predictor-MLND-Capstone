@@ -12,7 +12,7 @@ For detailed information, read the proposal.pdf file.
 4. Open the Jupyter notebook file using command `jupyter notebook project.ipynb` and run individual cells.
 
 
-##Libraries
+## Libraries
 1. fix-yahoo-finance - Used for data retrival. https://pypi.org/project/fix-yahoo-finance/
 2. Jupyter Notebook
 3. Keras
